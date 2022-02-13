@@ -1,17 +1,41 @@
+"""
+Functions to load historical data from census PUMS
+@author Luca Canizzo
+"""
 #%%
-import zipfile
-import re
-from utils import census_ftp
+import os
+from ftplib import FTP
+from multiprocessing import Pool
+from census_utils import years, states, types, base_path, extract_csv
 
-file_path = 'programs-surveys/acs/data/pums/2019/1-Year/csv_hin.zip'
+#%%
+def extract_files_for_year(year):
+    print(f'--- pool for year {year} started.')
+    with FTP('ftp2.census.gov') as ftp:
+        ftp.login()
+        # cwd to year
+        ftp.cwd(base_path + f'{year}')
 
-ftp_file = census_ftp.download_file(file_path)
+        # Check if in 1-Year or default dir 
+        hasOneYearDir = False
+        def setHasDir (retr_line):
+            nonlocal hasOneYearDir
+            hasOneYearDir = retr_line.endswith('1-Year')
+        ftp.retrlines('LIST *1-Year*', setHasDir)
 
-with zipfile.ZipFile(ftp_file, 'r') as zip:
-    for info in zip.infolist():
-        if re.match(r'.+(\.csv)$', info.filename):
-            info.filename = '2019_h_in.csv' # todo: dynamic from iteration
-            print(f'extracting "{info.filename}" to ./csv-data')
-            zip.extract(info, './csv-data')
+        # Update relative path appropriately
+        if hasOneYearDir:
+            ftp.cwd('1-Year')
+
+        for state in states:
+            for type in types:
+                # Try to download csv at path
+                extract_csv(ftp, year, type, state)
+        print(f'--- pool for year {year} done.')
+
+if __name__ == "__main__":
+    print(years)
+    extract_pool = Pool()
+    test = extract_pool.map(extract_files_for_year, years)    
+    print(test)
 # %%
- 
