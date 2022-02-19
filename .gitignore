@@ -1,4 +1,5 @@
 scratch.py
+db_connect.py
 todo.txt
 csv_data/
 __pycache__/
