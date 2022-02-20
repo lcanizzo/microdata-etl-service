@@ -3,4 +3,5 @@ db_connect.py
 todo.txt
 test_data/
 csv_data/
+staged_data/
 __pycache__/

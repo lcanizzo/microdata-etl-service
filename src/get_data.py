@@ -4,13 +4,14 @@ Functions to load historical data from census PUMS
 """
 #%%
 from ftplib import FTP
-from census_utils import states, types, base_path, extract_csv
+from ftp_utils import base_path, extract_csv
+from dictionary_utils import states, types
 
 #%%
 def extract_files_for_year(year):
     """
     Given a year, connects to the census FTP server and extracts 1-year PUMS
-    CSV files to the csv_data dir
+    CSV files to the csv_data/surveys dir
     """
     print(f'--- extraction for year {year} started.')
     with FTP('ftp2.census.gov') as ftp:
@@ -37,7 +38,7 @@ def extract_files_for_year(year):
 
 if __name__ == "__main__":
     from multiprocessing import Pool
-    from census_utils import years
+    from dictionary_utils import years
     
     print(years)
     extract_pool = Pool()

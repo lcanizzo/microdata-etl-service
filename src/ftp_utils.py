@@ -2,21 +2,15 @@
 Functions & constants to interface with census ftp server.
 @author Luca Canizzo
 """
-#%%
+# %%
+from io import BytesIO
+import re
+import zipfile
 import sys
 sys.path.append("..")
-import zipfile
-import re
-from io import BytesIO
 
 base_path = 'programs-surveys/acs/data/pums/'
-years = [*range(2005, 2020, 1)]
-states = [ 'ak', 'al', 'ar', 'az', 'ca', 'co', 'ct', 'dc', 'de', 'fl', 'ga',
-           'hi', 'ia', 'id', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'me',
-           'mi', 'mn', 'mo', 'ms', 'mt', 'nc', 'nd', 'ne', 'nh', 'nj', 'nm',
-           'nv', 'ny', 'oh', 'ok', 'or', 'pa', 'ri', 'sc', 'sd', 'tn', 'tx',
-           'ut', 'va', 'vt', 'wa', 'wi', 'wv', 'wy']
-types = ['h', 'p']
+
 
 def download_file(ftp, path):
     """
@@ -27,10 +21,11 @@ def download_file(ftp, path):
     download.seek(0)
     return download
 
+
 def extract_csv(ftp, year, type, state):
     """
     Given an ftp instance, survey type ("p" || "h"), and state, 
-    extracts the assoc. CSV file in the working dir to the csv_data dir.
+    extracts the assoc. CSV file in the working dir to the csv_data/surveys dir.
     """
     file_name = f'csv_{type}{state}.zip'
     zip_file = download_file(ftp, file_name)
@@ -40,7 +35,8 @@ def extract_csv(ftp, year, type, state):
             if re.match(r'.+(\.csv)$', info.filename):
                 info.filename = f'{year}_{type}_{state}.csv'
                 print(f'extracting "{info.filename}" to ./csv_date...')
-                zip.extract(info, './csv_data')
+                zip.extract(info, './csv_data/surveys')
+
 
 if __name__ == '__main__':
     from ftplib import FTP
@@ -57,4 +53,3 @@ if __name__ == '__main__':
         download_file(ftp, file_path)
         # extract_csv(ftp, year, type, state)
 # %%
- 
