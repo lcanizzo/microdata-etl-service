@@ -11,7 +11,7 @@ from dictionary_utils import states, types
 def extract_files_for_year(year):
     """
     Given a year, connects to the census FTP server and extracts 1-year PUMS
-    CSV files to the csv_data/surveys dir
+    CSV files to the data/surveys dir
     """
     print(f'--- extraction for year {year} started.')
     with FTP('ftp2.census.gov') as ftp:

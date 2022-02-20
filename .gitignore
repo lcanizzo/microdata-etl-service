@@ -1,7 +1,9 @@
-scratch.py
+_scratch.py
 db_connect.py
 todo.txt
+col_name_map
 test_data/
-csv_data/
+data/
 staged_data/
+notes/
 __pycache__/
