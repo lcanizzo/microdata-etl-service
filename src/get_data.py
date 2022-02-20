@@ -4,8 +4,7 @@ Functions to load historical data from census PUMS
 """
 #%%
 from ftplib import FTP
-from multiprocessing import Pool
-from census_utils import years, states, types, base_path, extract_csv
+from census_utils import states, types, base_path, extract_csv
 
 #%%
 def extract_files_for_year(year):
@@ -37,6 +36,9 @@ def extract_files_for_year(year):
         print(f'--- extraction for year {year} done.')
 
 if __name__ == "__main__":
+    from multiprocessing import Pool
+    from census_utils import years
+    
     print(years)
     extract_pool = Pool()
     extract_pool.map(extract_files_for_year, years)
