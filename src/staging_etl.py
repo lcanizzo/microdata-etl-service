@@ -4,39 +4,62 @@ Transform raw csv data to staging format.
 # %%
 import pandas as pd
 import json
-from dictionary_utils import get_values_dict
+from dictionary_utils import get_values_dict, prefix_val, skip_map_columns, \
+    custom_transform_columns
 
 error_cols = []
 error_tuples = []
 
 
-def set_val_from_dictionary(col, val, dict):
+def set_val_from_dictionary(col, reported_val, dict):
     """
     Given a colun name, value, and data dictionary, returns the human readable
     value for the given column.
     """
-    if str(val) in dict[col]:
-        return dict[col][str(val)]
-    if pd.notna(val) and type(val) is float:
-        int_val = int(val)
-        if str(int_val) in dict[col]:
-            return dict[col][str(int_val)]
-    if pd.isna(val) or str(val) == 'nan':
-        return None
-    if col not in error_cols:
-        print(f'value "{val}" for col: "{col}" is missing in the dict.')
-        error_cols.append(col)
-    if (col, val) not in error_tuples:
-        error_tuples.append((col, val))
+    match_val = reported_val
 
-    return val
+    # normalize return for null and nan
+    if pd.isna(reported_val) \
+        or pd.isnull(reported_val) \
+        or reported_val == 'did not report':
+        return ''
+
+    # normalize numeric values to standard number string
+    if isinstance(reported_val, float):
+        int_val = int(reported_val)
+        match_val = str(int_val)
+    if isinstance(reported_val, int):
+        match_val = str(reported_val)
+
+    match_val = prefix_val(col, match_val)
+
+    # skip matching for skip columns
+    if col in skip_map_columns:
+        return match_val
+    
+    # use custom fn for custom columns
+    if col in custom_transform_columns:
+        return custom_transform_columns[col](match_val)
+
+    # get dictionary value
+    if match_val in dict[col]:
+        return dict[col][match_val]
+
+    if col not in error_cols:
+        print(f'value "{match_val}" for col: "{col}" is missing in the dict.')
+        error_cols.append(col)
+    if (col, match_val) not in error_tuples:
+        error_tuples.append((col, match_val))
+
+    return reported_val
 
 
 def create_transform_output(year, state, type):
     """
     Given a year, state, and survey type, retrieves the local copy of survey
     data and data dictionary for the given year, transforms data values to
-    dictionary equivalent, and outputs a staged_data/{year}_{type}_{state}.csv file
+    dictionary equivalent. 
+    Output: staged_data/{year}_{type}_{state}.csv
     """
     data = pd.read_csv(f'data/surveys/{year}_{type}_{state}.csv')
     vals_dict = get_values_dict(year)
@@ -64,7 +87,8 @@ def create_transform_output(year, state, type):
                 log_file.write(f'{v},{c}\n')
 
     # add year column
-    year_series = pd.Series([year] * len(data), index=data.index)
+    year_series = pd.Series(
+        [year] * len(data), index=data.index, name='SurveyYear')
     data = pd.concat([data, year_series], axis=1)
 
     # write to staged_data directors
@@ -87,7 +111,7 @@ if __name__ == "__main__":
     from functools import partial
     from _constants import states, types, recent_years
 
-    # %%
+    print(recent_years)
     transform_pool = Pool()
     transform_pool.map(
         partial(transform_state_for_years, years=recent_years, types=types),
@@ -95,6 +119,6 @@ if __name__ == "__main__":
     )
 
     # Single test
-    # create_transform_output('2018', 'ak', 'p')
+    # create_transform_output(2013, 'nj', 'h')
 
     print('done')

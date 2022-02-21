@@ -4,7 +4,6 @@ from os import listdir, remove as os_remove
 from os.path import isfile, join, exists
 
 path = './etl_val_errors'
-compiled_path = f'{path}/compiled/errors.csv'
 summary_path = f'{path}/compiled/summary.csv'
 
 
@@ -38,17 +37,22 @@ if __name__ == '__main__':
 
     for file_name in error_file_list:
         file_path = f'{path}/{file_name}'
-        error_frames.append(pd.read_csv(file_path))
-        os_remove(file_path)
+        frame = pd.read_csv(file_path)
+        error_frames.append(frame)
+        # os_remove(file_path)
 
     if error_frames:
         compiled_errors = pd.concat(error_frames)
         compiled_errors.drop_duplicates(inplace=True)
         compiled_errors = pivot_errors(compiled_errors)
-        compiled_errors.to_csv(summary_path)
-
-    if exists(compiled_path):
-        compiled_errors = pivot_errors(pd.read_csv(compiled_path))
         compiled_errors = condense_summary(compiled_errors)
-        print(compiled_errors.head())
         compiled_errors.to_csv(summary_path)
+    print('\ndone')
+
+    
+
+    # Forgot to condense summary after pivot
+    # if exists(summary_path):
+    #     compiled_errors = pd.read_csv(summary_path)
+    #     compiled_errors = condense_summary(compiled_errors)
+    #     compiled_errors.to_csv(summary_path)

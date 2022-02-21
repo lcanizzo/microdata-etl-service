@@ -1,5 +1,7 @@
+# %%
 years = [*range(2005, 2020, 1)]
-recent_years = [2018, 2019]
+# recent_years = [*range(2013, 2016, 1)]
+recent_years = [*range(2016, 2020, 1)]
 states = ['ak', 'al', 'ar', 'az', 'ca', 'co', 'ct', 'dc', 'de', 'fl', 'ga',
           'hi', 'ia', 'id', 'il', 'in', 'ks', 'ky', 'la', 'ma', 'md', 'me',
           'mi', 'mn', 'mo', 'ms', 'mt', 'nc', 'nd', 'ne', 'nh', 'nj', 'nm',

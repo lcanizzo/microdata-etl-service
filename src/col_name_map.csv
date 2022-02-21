@@ -522,3 +522,8 @@
 2019_405,FJWTRNSP,TransportationToWorkAllocated
 2019_428,FRELSHIPP,RelationshipAllocated
 2019_440,FWKWNP,WeeksWorkedPastYearAllocated
+2013-2017_17,BUS,BusinessOnProperty
+2013-2017_51,TOIL,FlushToilet
+2013-2017_92,TAXP,YearlyPropertyTaxes
+2013-2017_104,FBUSP,BusinessOnPropertyAllocated
+2013-2017_147,FTOILP,FlushToiletAllocated

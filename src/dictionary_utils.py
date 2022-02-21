@@ -7,9 +7,63 @@ import pandas as pd
 import json
 from _constants import recent_years
 
+# dict.column.value
+zero_prefix_rules = {
+    'DetailedAncestryRecode1': 3,
+    'DetailedAncestryRecode2': 3,
+    'DetailedHispanicOriginRecode': 2,
+    'DetailedRaceRecode2': 2,
+    'DetailedRaceRecode3': 3,
+    'EducationalAttainment': 2,
+    'GradeLevelAttending': 2,
+    'HouseholdType': 2,
+    'IndustryRecode': 4,
+    'MigrationPUMA': 5,
+    'MigrationStateOrCountryRecode': 4,
+    'OccupationRecode': 4,
+    'PlaceOfBirthRecode': 3,
+    'PlaceOfWorkPUMA': 5,
+    'PlaceOfWorkStateOrForeignRecode': 3,
+    'Relationship': 2,
+    'State': 2,
+    'TimeOfArrivalAtWork': 3,
+    'TimeOfDepartureForWork': 3,
+    'TransportationToWork': 2,
+    'UnitsInStructure': 2,
+    'VeteranPeriodOfService': 2,
+    'WhenStructureBuilt': 2,
+    'WorkExperienceOfHouseholderAndSpouse': 2,
+    'WorkStatusOfHouseholderOrSpouseInFamilyHome': 2,
+    'YearlyPropertyTaxes': 2
+}
+
+
+skip_map_columns = [
+    'MigrationPUMA',
+    'MigrationStateOrCountryRecode',
+    'PlaceOfWorkPUMA'
+]
+
+
+custom_transform_columns = {
+    'IncomeAdjustmentFactor': lambda x: x[:1]+'.'+x[1:]
+}
+
+
+def get_dict_year(year):
+    if year > 2017:
+        return str(year)
+    if year > 2012:
+        return '2013-2017'
+    return None
+
 
 def get_vals_dict_path(year):
-    return f'./data/dictionaries/{year}_values.csv'
+    if year > 2017:
+        return f'./data/dictionaries/{year}_values.csv'
+    if year > 2012:
+        return f'./data/dictionaries/2013-2017_values.csv'
+    return None
 
 
 def get_values_dict(year):
@@ -39,6 +93,19 @@ def get_values_dict(year):
     return val_dict
 
 
+def prefix_val(column_name, value):
+    """
+    column_name: string
+    value: string
+    returns prefixed value if rule defined, else returns value.
+    """
+    if column_name in zero_prefix_rules:
+        req_len = zero_prefix_rules[column_name]
+        prefix_len = req_len - len(value)
+        return ('0'*prefix_len) + value
+    return value
+
+
 def split_original_dictionary(year):
     """
     Given a path to an original PUMS data-dict csv,
@@ -50,8 +117,9 @@ def split_original_dictionary(year):
     elif year == 2018 or year == 2019:
         dict_year = year
 
-    original_file = f'./data/dictionaries/raw/PUMS_Data_Dictionary_{dict_year}.csv'
-    vals_file = get_vals_dict_path(dict_year)
+    original_file = \
+        f'./data/dictionaries/raw/PUMS_Data_Dictionary_{dict_year}.csv'
+    vals_file = get_vals_dict_path(year)
     descriptions_file = f'./data/dictionaries/{dict_year}_descriptions.csv'
     print(f'--- prepare dict csv for "{original_file}" started.')
 
@@ -66,6 +134,14 @@ def split_original_dictionary(year):
                 continue
             else:
                 f.write(line)
+
+    # add custom pre-2016 language map values
+    if dict_year == '2013-2017':
+        print('append custom language values')
+        manual_values = pd.read_csv('./data/dictionaries/raw/custom_pre_2016_lanp.csv')
+        defined_values = pd.read_csv(vals_file)
+        merged_df = pd.concat([manual_values, defined_values], ignore_index=True)
+        merged_df.to_csv(vals_file)
 
     rename_dict_cols(vals_file)
     print(f'values file: "{vals_file}" written.')
@@ -122,8 +198,11 @@ def create_values_json(year):
     Reads a values csv file, and produces a JSON file.
     """
     val_dict = get_values_dict(year)
+    dict_year = get_dict_year(year)
 
-    with open(f'./data/dictionaries/{year}_values.json', 'w') as output_file:
+    with open(
+        f'./data/dictionaries/{dict_year}_values.json', 'w'
+    ) as output_file:
         json.dump(val_dict, output_file)
 
 
@@ -132,9 +211,17 @@ def prepare_recent_years():
     Splits PUMS data dictionaries for recent years, and creates Values
     dictionary JSON files.
     """
+    dictionaries = set([])
+
     for year in recent_years:
-        split_original_dictionary(year)
-        create_values_json(year)
+        if year > 2017:
+            dictionaries.add(year)
+        elif year > 2012:
+            dictionaries.add(2013)
+
+    for dictionary in dictionaries:
+        split_original_dictionary(dictionary)
+        create_values_json(dictionary)
 
 
 def create_name_map_json():
@@ -142,7 +229,7 @@ def create_name_map_json():
     Reads a static name map CSV and returns JSON format
     """
     col_name_map = pd.read_csv(
-        './data/dictionaries/manual/col_name_map.csv',
+        './col_name_map.csv',
         index_col='PUMS_COL_NAME',
         usecols=['PUMS_COL_NAME', 'SQL_COL']
     ).to_dict()['SQL_COL']
@@ -153,14 +240,15 @@ def create_name_map_json():
 
 if __name__ == "__main__":
     print(f'recent years: {recent_years}')
-    create_name_map_json()
-    prepare_recent_years()
+    # create_name_map_json()
+    # prepare_recent_years()
+    print(get_values_dict(2014))
 
     # create PUMS_COL_NAME, Description csv
     # dictionary_name_desc = pd.read_csv(
-    #     f'./data/dictionaries/2019_descriptions.csv',
+    #     f'./data/dictionaries/2013-2017_descriptions.csv',
     #     usecols=['PUMS_COL_NAME', 'DESCRIPTION']
     # )
-    # dictionary_name_desc.to_csv('./2019_name_description.csv')
+    # dictionary_name_desc.to_csv('./2013-2017_name_description.csv')
 
     print('done.')

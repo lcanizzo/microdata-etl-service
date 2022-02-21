@@ -5,7 +5,7 @@ Functions to load historical data from census PUMS
 #%%
 from ftplib import FTP
 from ftp_utils import base_path, extract_csv
-from dictionary_utils import states, types
+from _constants import states, types
 
 #%%
 def extract_files_for_year(year):
