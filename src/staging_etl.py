@@ -9,27 +9,25 @@ from dictionary_utils import get_values_dict
 error_cols = []
 error_tuples = []
 
+
 def set_val_from_dictionary(col, val, dict):
     """
     Given a colun name, value, and data dictionary, returns the human readable
     value for the given column.
     """
-    col_in_dict = col in dict
-
-    if col_in_dict:
-        if str(val) in dict[col]:
-            return dict[col][str(val)]
-        if pd.notna(val) and type(val) is float:
-            int_val = int(val)
-            if str(int_val) in dict[col]:
-                return dict[col][str(int_val)]
+    if str(val) in dict[col]:
+        return dict[col][str(val)]
+    if pd.notna(val) and type(val) is float:
+        int_val = int(val)
+        if str(int_val) in dict[col]:
+            return dict[col][str(int_val)]
     if pd.isna(val) or str(val) == 'nan':
         return None
     if col not in error_cols:
-        if col_in_dict:
-            print(f'value "{val}" for col: "{col}" is missing in the dict.')
-            error_cols.append(col)
-            error_tuples.append((col, val))
+        print(f'value "{val}" for col: "{col}" is missing in the dict.')
+        error_cols.append(col)
+    if (col, val) not in error_tuples:
+        error_tuples.append((col, val))
 
     return val
 
@@ -56,16 +54,18 @@ def create_transform_output(year, state, type):
             data[col] = data[col].map(
                 lambda val: set_val_from_dictionary(col, val, vals_dict)
             )
-    
+
     # log value errors
     if error_tuples:
-        with open(f'etl_value_errors_{year}_{state}_{type}.csv', 'w+') as log_file:
+        with open(f'etl_val_errors/{year}_{state}_{type}.csv', 'w+') as log_file:
+            log_file.write('value,column\n')
             for error_tuple in error_tuples:
                 c, v = error_tuple
-                log_file.write(f'value "{v}" for col: "{c}" is missing in the dict.')
+                log_file.write(f'{v},{c}\n')
 
     # add year column
-    data['Year'] = str(year)
+    year_series = pd.Series([year] * len(data), index=data.index)
+    data = pd.concat([data, year_series], axis=1)
 
     # write to staged_data directors
     data.to_csv(f'staged_data/{year}_{type}_{state}.csv')
@@ -85,7 +85,7 @@ def transform_state_for_years(state, years, types):
 if __name__ == "__main__":
     from multiprocessing import Pool
     from functools import partial
-    from dictionary_utils import states, types, recent_years
+    from _constants import states, types, recent_years
 
     # %%
     transform_pool = Pool()
@@ -93,7 +93,8 @@ if __name__ == "__main__":
         partial(transform_state_for_years, years=recent_years, types=types),
         states
     )
-    print('done')
 
     # Single test
     # create_transform_output('2018', 'ak', 'p')
+
+    print('done')

@@ -38,7 +38,7 @@ def extract_files_for_year(year):
 
 if __name__ == "__main__":
     from multiprocessing import Pool
-    from dictionary_utils import years
+    from _constants import years
     
     print(years)
     extract_pool = Pool()

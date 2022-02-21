@@ -6,4 +6,5 @@ test_data/
 data/
 staged_data/
 notes/
+etl_val_errors/
 __pycache__/
