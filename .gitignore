@@ -1,9 +1,7 @@
 _scratch.py
-db_connect.py
-todo.txt
-test_data/
-data/
-staged_data/
+test_runs/
 notes/
-etl_val_errors/
+**/compiled_data/**/*.csv
+**/compiled_data/**/*.json
+compiled_data/*.json
 __pycache__/

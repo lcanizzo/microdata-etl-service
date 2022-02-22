@@ -46,7 +46,8 @@ skip_map_columns = [
 
 
 custom_transform_columns = {
-    'IncomeAdjustmentFactor': lambda x: x[:1]+'.'+x[1:]
+    'IncomeAdjustmentFactor': lambda x: x[:1]+'.'+x[1:],
+    'RecordType': lambda x: x
 }
 
 
@@ -60,9 +61,9 @@ def get_dict_year(year):
 
 def get_vals_dict_path(year):
     if year > 2017:
-        return f'./data/dictionaries/{year}_values.csv'
+        return f'./compiled_data/dictionaries/{year}_values.csv'
     if year > 2012:
-        return f'./data/dictionaries/2013-2017_values.csv'
+        return f'./compiled_data/dictionaries/2013-2017_values.csv'
     return None
 
 
@@ -118,9 +119,9 @@ def split_original_dictionary(year):
         dict_year = year
 
     original_file = \
-        f'./data/dictionaries/raw/PUMS_Data_Dictionary_{dict_year}.csv'
+        f'./data/dictionaries/PUMS_Data_Dictionary_{dict_year}.csv'
     vals_file = get_vals_dict_path(year)
-    descriptions_file = f'./data/dictionaries/{dict_year}_descriptions.csv'
+    descriptions_file = f'./compiled_data/dictionaries/{dict_year}_descriptions.csv'
     print(f'--- prepare dict csv for "{original_file}" started.')
 
     # Produce values csv
@@ -138,7 +139,7 @@ def split_original_dictionary(year):
     # add custom pre-2016 language map values
     if dict_year == '2013-2017':
         print('append custom language values')
-        manual_values = pd.read_csv('./data/dictionaries/raw/custom_pre_2016_lanp.csv')
+        manual_values = pd.read_csv('./data/dictionaries/custom_pre_2016_lanp.csv')
         defined_values = pd.read_csv(vals_file)
         merged_df = pd.concat([manual_values, defined_values], ignore_index=True)
         merged_df.to_csv(vals_file)
@@ -171,7 +172,7 @@ def rename_dict_cols(dict_path):
     name_map = {}
     missing_cols = []
 
-    with open('./data/dictionaries/col_name_map.json') as json_file:
+    with open('./compiled_data/dictionaries/col_name_map.json') as json_file:
         name_map = json.load(json_file)
 
     def log_missing_cols():
@@ -180,7 +181,7 @@ def rename_dict_cols(dict_path):
                 missing_cols.append(name)
 
         if missing_cols:
-            with open('./missing_PUMS_Col_Names.csv', 'w') as f:
+            with open('./compiled_data/missing_PUMS_Col_Names.csv', 'w') as f:
                 f.write('MissingColName\n')
                 for col in missing_cols:
                     f.write(f'{col}\n')
@@ -201,7 +202,7 @@ def create_values_json(year):
     dict_year = get_dict_year(year)
 
     with open(
-        f'./data/dictionaries/{dict_year}_values.json', 'w'
+        f'./compiled_data/dictionaries/{dict_year}_values.json', 'w'
     ) as output_file:
         json.dump(val_dict, output_file)
 
@@ -229,24 +230,23 @@ def create_name_map_json():
     Reads a static name map CSV and returns JSON format
     """
     col_name_map = pd.read_csv(
-        './col_name_map.csv',
+        './data/dictionaries/col_name_map.csv',
         index_col='PUMS_COL_NAME',
         usecols=['PUMS_COL_NAME', 'SQL_COL']
     ).to_dict()['SQL_COL']
 
-    with open('./data/dictionaries/col_name_map.json', 'w') as output_file:
+    with open('./compiled_data/dictionaries/col_name_map.json', 'w') as output_file:
         json.dump(col_name_map, output_file)
 
 
 if __name__ == "__main__":
     print(f'recent years: {recent_years}')
-    # create_name_map_json()
-    # prepare_recent_years()
-    print(get_values_dict(2014))
+    create_name_map_json()
+    prepare_recent_years()
 
-    # create PUMS_COL_NAME, Description csv
+    ## create PUMS_COL_NAME, Description csv
     # dictionary_name_desc = pd.read_csv(
-    #     f'./data/dictionaries/2013-2017_descriptions.csv',
+    #     f'compiled_data/dictionaries/2013-2017_descriptions.csv',
     #     usecols=['PUMS_COL_NAME', 'DESCRIPTION']
     # )
     # dictionary_name_desc.to_csv('./2013-2017_name_description.csv')

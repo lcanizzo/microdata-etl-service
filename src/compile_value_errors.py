@@ -3,7 +3,7 @@ import pandas as pd
 from os import listdir, remove as os_remove
 from os.path import isfile, join, exists
 
-path = './etl_val_errors'
+path = './compiled_data/etl_val_errors'
 summary_path = f'{path}/compiled/summary.csv'
 
 
@@ -48,11 +48,3 @@ if __name__ == '__main__':
         compiled_errors = condense_summary(compiled_errors)
         compiled_errors.to_csv(summary_path)
     print('\ndone')
-
-    
-
-    # Forgot to condense summary after pivot
-    # if exists(summary_path):
-    #     compiled_errors = pd.read_csv(summary_path)
-    #     compiled_errors = condense_summary(compiled_errors)
-    #     compiled_errors.to_csv(summary_path)

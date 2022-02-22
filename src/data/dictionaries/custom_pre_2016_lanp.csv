@@ -1,0 +1,114 @@
+,DICT_TYPE,PUMS_COL_NAME,DATA_TYPE,DATA_LENGTH,MIN_VAL,MAX_VAL,VALUE
+2995,VAL,LanguageSpokenAtHome,C,4,bbbb,bbbb,N/A (GQ/vacant)
+2995,VAL,LanguageSpokenAtHome,C,4,bbb,bbb,N/A (less than 5 years old/speaks only English) 
+2995,VAL,LanguageSpokenAtHome,C,4,601,601,Jamaican Creole
+2995,VAL,LanguageSpokenAtHome,C,4,602,602,Krio
+2995,VAL,LanguageSpokenAtHome,C,4,607,607,German
+2995,VAL,LanguageSpokenAtHome,C,4,608,608,Pennsylvania Dutch
+2995,VAL,LanguageSpokenAtHome,C,4,609,609,Yiddish
+2995,VAL,LanguageSpokenAtHome,C,4,610,610,Dutch
+2995,VAL,LanguageSpokenAtHome,C,4,611,611,Afrikaans
+2995,VAL,LanguageSpokenAtHome,C,4,614,614,Swedish
+2995,VAL,LanguageSpokenAtHome,C,4,615,615,Danish
+2995,VAL,LanguageSpokenAtHome,C,4,616,616,Norwegian
+2995,VAL,LanguageSpokenAtHome,C,4,619,619,Italian
+2995,VAL,LanguageSpokenAtHome,C,4,620,620,French
+2995,VAL,LanguageSpokenAtHome,C,4,622,622,Patois
+2995,VAL,LanguageSpokenAtHome,C,4,623,623,French Creole
+2995,VAL,LanguageSpokenAtHome,C,4,624,624,Cajun
+2995,VAL,LanguageSpokenAtHome,C,4,625,625,Spanish
+2995,VAL,LanguageSpokenAtHome,C,4,629,629,Portuguese
+2995,VAL,LanguageSpokenAtHome,C,4,631,631,Romanian
+2995,VAL,LanguageSpokenAtHome,C,4,635,635,Irish Gaelic
+2995,VAL,LanguageSpokenAtHome,C,4,637,637,Greek
+2995,VAL,LanguageSpokenAtHome,C,4,638,638,Albanian
+2995,VAL,LanguageSpokenAtHome,C,4,639,639,Russian
+2995,VAL,LanguageSpokenAtHome,C,4,641,641,Ukrainian
+2995,VAL,LanguageSpokenAtHome,C,4,642,642,Czech
+2995,VAL,LanguageSpokenAtHome,C,4,645,645,Polish
+2995,VAL,LanguageSpokenAtHome,C,4,646,646,Slovak
+2995,VAL,LanguageSpokenAtHome,C,4,647,647,Bulgarian
+2995,VAL,LanguageSpokenAtHome,C,4,648,648,Macedonian
+2995,VAL,LanguageSpokenAtHome,C,4,649,649,Serbo-Croatian
+2995,VAL,LanguageSpokenAtHome,C,4,650,650,Croatian
+2995,VAL,LanguageSpokenAtHome,C,4,651,651,Serbian
+2995,VAL,LanguageSpokenAtHome,C,4,653,653,Lithuanian
+2995,VAL,LanguageSpokenAtHome,C,4,654,654,Latvian
+2995,VAL,LanguageSpokenAtHome,C,4,655,655,Armenian
+2995,VAL,LanguageSpokenAtHome,C,4,656,656,Persian
+2995,VAL,LanguageSpokenAtHome,C,4,657,657,Pashto
+2995,VAL,LanguageSpokenAtHome,C,4,658,658,Kurdish
+2995,VAL,LanguageSpokenAtHome,C,4,662,662,India N.E.C.
+2995,VAL,LanguageSpokenAtHome,C,4,663,663,Hindi
+2995,VAL,LanguageSpokenAtHome,C,4,664,664,Bengali
+2995,VAL,LanguageSpokenAtHome,C,4,665,665,Panjabi
+2995,VAL,LanguageSpokenAtHome,C,4,666,666,Marathi
+2995,VAL,LanguageSpokenAtHome,C,4,667,667,Gujarati
+2995,VAL,LanguageSpokenAtHome,C,4,671,671,Urdu
+2995,VAL,LanguageSpokenAtHome,C,4,674,674,Nepali
+2995,VAL,LanguageSpokenAtHome,C,4,675,675,Sindhi
+2995,VAL,LanguageSpokenAtHome,C,4,676,676,Pakistan N.E.C.
+2995,VAL,LanguageSpokenAtHome,C,4,677,677,Sinhalese
+2995,VAL,LanguageSpokenAtHome,C,4,679,679,Finnish
+2995,VAL,LanguageSpokenAtHome,C,4,682,682,Hungarian
+2995,VAL,LanguageSpokenAtHome,C,4,689,689,Uighur
+2995,VAL,LanguageSpokenAtHome,C,4,691,691,Turkish
+2995,VAL,LanguageSpokenAtHome,C,4,694,694,Mongolian
+2995,VAL,LanguageSpokenAtHome,C,4,701,701,Telugu
+2995,VAL,LanguageSpokenAtHome,C,4,702,702,Kannada
+2995,VAL,LanguageSpokenAtHome,C,4,703,703,Malayalam
+2995,VAL,LanguageSpokenAtHome,C,4,704,704,Tamil
+2995,VAL,LanguageSpokenAtHome,C,4,708,708,Chinese
+2995,VAL,LanguageSpokenAtHome,C,4,711,711,Cantonese
+2995,VAL,LanguageSpokenAtHome,C,4,712,712,Mandarin
+2995,VAL,LanguageSpokenAtHome,C,4,714,714,Formosan
+2995,VAL,LanguageSpokenAtHome,C,4,717,717,Burmese
+2995,VAL,LanguageSpokenAtHome,C,4,720,720,Thai
+2995,VAL,LanguageSpokenAtHome,C,4,721,721,Mien
+2995,VAL,LanguageSpokenAtHome,C,4,722,722,Hmong
+2995,VAL,LanguageSpokenAtHome,C,4,723,723,Japanese
+2995,VAL,LanguageSpokenAtHome,C,4,724,724,Korean
+2995,VAL,LanguageSpokenAtHome,C,4,725,725,Laotian
+2995,VAL,LanguageSpokenAtHome,C,4,726,726,Mon-Khmer/Cambodian
+2995,VAL,LanguageSpokenAtHome,C,4,728,728,Vietnamese
+2995,VAL,LanguageSpokenAtHome,C,4,732,732,Indonesian
+2995,VAL,LanguageSpokenAtHome,C,4,739,739,Malay
+2995,VAL,LanguageSpokenAtHome,C,4,742,742,Tagalog
+2995,VAL,LanguageSpokenAtHome,C,4,743,743,Bisayan
+2995,VAL,LanguageSpokenAtHome,C,4,744,744,Sebuano
+2995,VAL,LanguageSpokenAtHome,C,4,746,746,Ilocano
+2995,VAL,LanguageSpokenAtHome,C,4,750,750,Micronesian
+2995,VAL,LanguageSpokenAtHome,C,4,752,752,Chamorro
+2995,VAL,LanguageSpokenAtHome,C,4,761,761,Trukese
+2995,VAL,LanguageSpokenAtHome,C,4,767,767,Samoan
+2995,VAL,LanguageSpokenAtHome,C,4,768,768,Tongan
+2995,VAL,LanguageSpokenAtHome,C,4,776,776,Hawaiian
+2995,VAL,LanguageSpokenAtHome,C,4,777,777,Arabic
+2995,VAL,LanguageSpokenAtHome,C,4,778,778,Hebrew
+2995,VAL,LanguageSpokenAtHome,C,4,779,779,Syriac
+2995,VAL,LanguageSpokenAtHome,C,4,780,780,Amharic
+2995,VAL,LanguageSpokenAtHome,C,4,783,783,Cushite
+2995,VAL,LanguageSpokenAtHome,C,4,791,791,Swahili
+2995,VAL,LanguageSpokenAtHome,C,4,792,792,Bantu
+2995,VAL,LanguageSpokenAtHome,C,4,793,793,Mande
+2995,VAL,LanguageSpokenAtHome,C,4,794,794,Fulani
+2995,VAL,LanguageSpokenAtHome,C,4,796,796,Kru/Ibo/Yoruba
+2995,VAL,LanguageSpokenAtHome,C,4,799,799,African
+2995,VAL,LanguageSpokenAtHome,C,4,806,806,Other Algonquian languages
+2995,VAL,LanguageSpokenAtHome,C,4,819,819,Ojibwa
+2995,VAL,LanguageSpokenAtHome,C,4,862,862,Apache
+2995,VAL,LanguageSpokenAtHome,C,4,864,864,Navajo
+2995,VAL,LanguageSpokenAtHome,C,4,907,907,Dakota
+2995,VAL,LanguageSpokenAtHome,C,4,924,924,Keres
+2995,VAL,LanguageSpokenAtHome,C,4,933,933,Cherokee
+2995,VAL,LanguageSpokenAtHome,C,4,964,964,Zuni
+2995,VAL,LanguageSpokenAtHome,C,4,985,985,Other Indo-European languages
+2995,VAL,LanguageSpokenAtHome,C,4,986,986,Other Asian languages
+2995,VAL,LanguageSpokenAtHome,C,4,988,988,Other Pacific Island languages
+2995,VAL,LanguageSpokenAtHome,C,4,989,989,Other specified African languages
+2995,VAL,LanguageSpokenAtHome,C,4,990,990,Aleut-Eskimo languages
+2995,VAL,LanguageSpokenAtHome,C,4,992,992,South/Central American Indian languages
+2995,VAL,LanguageSpokenAtHome,C,4,993,993,Other Specified North American Indian languages
+2995,VAL,LanguageSpokenAtHome,C,4,994,994,Other languages
+2995,VAL,LanguageSpokenAtHome,C,4,996,996,Language not specified
+2995,VAL,LanguageSpokenAtHome,C,4,-09,-09,Code classification is Not Applicable because data collected prior to 2012

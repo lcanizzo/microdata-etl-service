@@ -25,7 +25,7 @@ def download_file(ftp, path):
 def extract_csv(ftp, year, type, state):
     """
     Given an ftp instance, survey type ("p" || "h"), and state, 
-    extracts the assoc. CSV file in the working dir to the data/surveys dir.
+    extracts the assoc. CSV file in the working dir to the compiled_data/surveys dir.
     """
     file_name = f'csv_{type}{state}.zip'
     zip_file = download_file(ftp, file_name)
@@ -34,8 +34,8 @@ def extract_csv(ftp, year, type, state):
         for info in zip.infolist():
             if re.match(r'.+(\.csv)$', info.filename):
                 info.filename = f'{year}_{type}_{state}.csv'
-                print(f'extracting "{info.filename}" to ./csv_date...')
-                zip.extract(info, './data/surveys')
+                print(f'extracting "{info.filename}" to ./compiled_data/surveys...')
+                zip.extract(info, './compiled_data/surveys')
 
 
 if __name__ == '__main__':
