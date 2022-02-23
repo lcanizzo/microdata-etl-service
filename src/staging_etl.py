@@ -58,7 +58,7 @@ def set_val_from_dictionary(col, reported_val, dict):
     # skip matching for skip columns
     if col in skip_map_columns:
         return match_val
-    
+
     # use custom fn for custom columns
     if col in custom_transform_columns:
         return custom_transform_columns[col](match_val)
@@ -85,14 +85,15 @@ def create_transform_output(year, state, type):
     """
     print(f'\ncreate_transform_output({year}, {state}, {type})')
     data = pd.read_csv(f'./compiled_data/surveys/{year}_{type}_{state}.csv')
-    defined_types = pd.read_json(f'./compiled_data/types/{str(year)}.json', orient='index')[0]
+    defined_types = pd.read_json(
+        f'./compiled_data/types/{str(year)}.json', orient='index')[0]
     data_type = {}
 
     # update column names
     with open('./compiled_data/dictionaries/col_name_map.json') as json_file:
         column_name_map = json.load(json_file)
         data = data.rename(column_name_map, axis='columns')
-    
+
     # drop columns
     include_cols = pd.read_csv('./data/dictionaries/load_cols.csv')
     drop_cols = []
@@ -115,7 +116,7 @@ def create_transform_output(year, state, type):
         if col in vals_dict:
             data[col] = data[col].map(
                 lambda val: set_val_from_dictionary(col, val, vals_dict)
-            )        
+            )
         elif col in data_type:
             data[col] = data[col].map(
                 lambda val: normalize_null_vals(val)
@@ -158,17 +159,21 @@ if __name__ == "__main__":
     from functools import partial
     from _constants import states, types, recent_years
     from process_timer import time_execution
+    from dictionary_utils import create_name_map_json, prepare_recent_years
 
     def process():
         print(f'staging_etl for years: {recent_years}')
 
+        create_name_map_json()
+        prepare_recent_years()
         transform_pool = Pool()
         transform_pool.map(
-            partial(transform_state_for_years, years=recent_years, types=types),
+            partial(transform_state_for_years,
+                    years=recent_years, types=types),
             states
         )
 
         # Single test
         # create_transform_output(2019, 'nv', 'h')
-    
+
     time_execution(process)

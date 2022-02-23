@@ -34,7 +34,6 @@ def load_staging_dataframe(df, table):
         'mssql+pyodbc:///?odbc_connect=%s' % params
     )
     df.drop(['Unnamed: 0'], axis=1, inplace=True)
-    print(df.columns)
     df.reset_index(drop=True, inplace=True)
     df.to_sql(
         table,

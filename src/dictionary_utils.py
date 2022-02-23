@@ -139,9 +139,11 @@ def split_original_dictionary(year):
     # add custom pre-2016 language map values
     if dict_year == '2013-2017':
         print('append custom language values')
-        manual_values = pd.read_csv('./data/dictionaries/custom_pre_2016_lanp.csv')
+        manual_values = pd.read_csv(
+            './data/dictionaries/custom_pre_2016_lanp.csv')
         defined_values = pd.read_csv(vals_file)
-        merged_df = pd.concat([manual_values, defined_values], ignore_index=True)
+        merged_df = pd.concat(
+            [manual_values, defined_values], ignore_index=True)
         merged_df.to_csv(vals_file)
 
     rename_dict_cols(vals_file)
@@ -210,7 +212,7 @@ def create_values_json(year):
 def prepare_recent_years():
     """
     Splits PUMS data dictionaries for recent years, and creates Values
-    dictionary JSON files.
+    dictionary JSON files and types json file.
     """
     dictionaries = set([])
 
@@ -223,6 +225,8 @@ def prepare_recent_years():
     for dictionary in dictionaries:
         split_original_dictionary(dictionary)
         create_values_json(dictionary)
+
+    define_data_types()
 
 
 def create_name_map_json():
@@ -239,16 +243,51 @@ def create_name_map_json():
         json.dump(col_name_map, output_file)
 
 
-if __name__ == "__main__":
-    print(f'recent years: {recent_years}')
-    create_name_map_json()
-    prepare_recent_years()
+def define_data_types():
+    big_numbers = ['YearlyMobileHomeCost',
+                   'MonthlyRent',
+                   'MonthlyFirstMortgagePayment',
+                   'SecondMortgagePayments',
+                   'PropertyValue',
+                   'FamilyIncome',
+                   'HouseholdIncome',
+                   'GrossRent',
+                   'MonthlyOwnerCosts',
+                   'UnadjustedInterestDividendNetRentalIncome',
+                   'UnadjustedOtherIncomePastYear',
+                   'UnadjustedRetirementIncomePastYear',
+                   'UnadjustedSelfEmployedIncomePastYear',
+                   'UnadjustedWageAndSalaryIncomePastYear',
+                   'UnadjustedTotalPersonEarning',
+                   'UnadjustedTotalPersonIncome']
+    for year in recent_years:
+        dict_path = get_vals_dict_path(year)
+        vals_dict = pd.read_csv(dict_path)
+        type_dict = {}
+        nums = vals_dict.loc[vals_dict['DATA_TYPE'] == 'N']
 
-    ## create PUMS_COL_NAME, Description csv
+        # defaults
+        for i, row in nums.iterrows():
+            type_dict[row['PUMS_COL_NAME']] = 'float16'
+
+        # big numbers
+        for col in big_numbers:
+            type_dict[col] = 'float32'
+
+        # static definitions
+        type_dict['IncomeAdjustmentFactor'] = None
+
+        with open(
+            f'./compiled_data/types/{year}.json', 'w'
+        ) as output_file:
+            json.dump(type_dict, output_file)
+
+
+# if __name__ == "__main__":
+    # create PUMS_COL_NAME, Description csv
     # dictionary_name_desc = pd.read_csv(
     #     f'compiled_data/dictionaries/2013-2017_descriptions.csv',
     #     usecols=['PUMS_COL_NAME', 'DESCRIPTION']
     # )
     # dictionary_name_desc.to_csv('./2013-2017_name_description.csv')
-
-    print('done.')
+    # print('\ndone.')
