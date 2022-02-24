@@ -1,0 +1,395 @@
+{
+    "fact_tables": [
+        {
+            "name": "Person",
+            "columns": [
+                "SerialNumber",
+                "PersonNumber"
+            ],
+            "dimensions": [
+                "Finances",
+                "Family",
+                "Employment",
+                "Education",
+                "Healthcare",
+                "Military",
+                "MigrationMobility",
+                "Race",
+                "NativityNationality",
+                "Biometrics",
+                "Transportation",
+                "Language",
+                "Location",
+                "Survey"
+            ]
+        },
+        {
+            "name": "Household",
+            "columns": [
+                "SerialNumber"
+            ],
+            "dimensions": [
+                "HouseholdExpense",
+                "HouseholdFinance",
+                "HouseholdDemographics",
+                "Utilities",
+                "Rental",
+                "UnitCharacteristics",
+                "HouseholdTechnology",
+                "Ownership",
+                "Location",
+                "Survey"
+            ]
+        }
+    ],
+    "tables": [
+        {
+            "name": "Finances",
+            "columns": [
+                "IncomeAdjustmentFactor",
+                "UnadjustedInterestDividendNetRentalIncome",
+                "UnadjustedOtherIncomePastYear",
+                "UnadjustedPublicAssistanceIncomePastYear",
+                "UnadjustedRetirementIncomePastYear",
+                "UnadjustedSupplementarySecurityIncomePastYear",
+                "UnadjustedSocialSecurityIncomePastYear",
+                "UnadjustedWageAndSalaryIncomePastYear",
+                "UnadjustedSelfEmployedIncomePastYear",
+                "UnadjustedTotalPersonEarning",
+                "UnadjustedTotalPersonIncome",
+                "IncomeToPovertyRatioRecode"
+            ]
+        },
+        {
+            "name": "Family",
+            "columns": [
+                "GaveBirthPastYear",
+                "GrandparentsLivingWithGrandchildren",
+                "LengthOfTimeResponsibleForGrandchildren",
+                "GrandparentChildcare",
+                "MaritalStatus",
+                "DivorcedPastYear",
+                "MarriedPastYear",
+                "TimesMarried",
+                "WidowedPastYear",
+                "YearLastMarried",
+                "Relationship",
+                "EmploymentStatusOfParents",
+                "MarriedSpousePresence",
+                "OwnChild",
+                "PresenceAndAgeOfChildren",
+                "RelatedChild",
+                "SubfamilyNumber",
+                "SubfamilyRelationship"
+            ]
+        },
+        {
+            "name": "Employment",
+            "columns": [
+                "ClassOfWorker",
+                "WorkCommuteTime",
+                "TransportationToWork",
+                "TemporaryAbsenceFromWork",
+                "AvailableForWork",
+                "OnLayoffFromWork",
+                "LookingForWork",
+                "InformedOfRecall",
+                "UnadjustedWageAndSalaryIncomePastYear",
+                "UnadjustedSelfEmployedIncomePastYear",
+                "AvgHoursWorkedPerWeek",
+                "LastWorkedWhen",
+                "WeeksWorkedPastYear",
+                "WorkedLastWeek",
+                "EmploymentStatusRecode",
+                "IndustryRecode",
+                "TimeOfArrivalAtWork",
+                "TimeOfDepartureForWork",
+                "IndustryClassificationRecode",
+                "OccupationRecode",
+                "PlaceOfWorkPUMA",
+                "StandardOccupationalClassification"
+            ]
+        },
+        {
+            "name": "Education",
+            "columns": [
+                "SchoolEnrollment",
+                "GradeLevelAttending",
+                "EducationalAttainment",
+                "FieldOfDegreeRecode1",
+                "FieldOfDegreeRecode2",
+                "ScienceEngineeringDegreeField",
+                "ScienceEngineeringRelatedDegreeField"
+            ]
+        },
+        {
+            "name": "Healthcare",
+            "columns": [
+                "SelfCareDifficulty",
+                "HearingDifficulty",
+                "VisionDifficulty",
+                "IndependentLivingDifficulty",
+                "AmbulatoryDifficulty",
+                "CognitiveDifficulty",
+                "InsuranceThroughEmployer",
+                "InsurancePrivateDirectPurchase",
+                "MedicareCoverageSeniorOrDisability",
+                "GovernmentMedicalAssistance",
+                "TricareCoverage",
+                "VeteransAffairs",
+                "IndianHealthService",
+                "DisabilityRecode",
+                "HealthInsuranceCoverageRecode",
+                "PrivateHealthInsuranceCoverageRecode",
+                "PublicHealthCoverageRecode",
+                "MedicareCoverageEdit",
+                "MedicaidCoverageEdit",
+                "TricareCoverageEdit",
+                "SubsidizedMarketplaceCoverage"
+            ]
+        },
+        {
+            "name": "Military",
+            "columns": [
+                "VeteranServiceDisabilityRatingPercentage",
+                "VeteranServiceDisabilityRatingCheckbox",
+                "TricareCoverage",
+                "VeteransAffairs",
+                "MilitaryService",
+                "ServedSeptember2001OrLater",
+                "ServedAugust1990ToAugust2001",
+                "ServedMay1975ToJuly1990",
+                "ServedVietnamEra",
+                "ServedFebruary1955ToJuly1964",
+                "ServedKoreanWar",
+                "ServedJanuary1947ToJune1950",
+                "ServedWorldWarII",
+                "ServedNovember1941OrEarlier",
+                "TricareCoverageEdit"
+            ]
+        },
+        {
+            "name": "MigrationMobility",
+            "columns": [
+                "HouseholdMobilityStatus",
+                "MigrationPUMA",
+                "MigrationStateOrCountryRecode"
+            ]
+        },
+        {
+            "name": "Biometrics",
+            "columns": [
+                "PersonWeight",
+                "Age",
+                "Sex",
+                "QuarterOfBirth"
+            ]
+        },
+        {
+            "name": "Race",
+            "columns": [
+                "DetailedRaceRecode1",
+                "DetailedRaceRecode2",
+                "DetailedRaceRecode3",
+                "RaceAmericanIndianOrAlaskaNativeRecode",
+                "RaceAsianRecode",
+                "RaceBlackOrAfricanAmericanRecode",
+                "RaceNativeHawaiianRecode",
+                "NumberOfMajorRaceGroupsRepresentedRecode",
+                "RaceOtherPacificIslanderRecode",
+                "RaceOtherRecode",
+                "RaceWhiteRecode"
+            ]
+        },
+        {
+            "name": "NativityNationality",
+            "columns": [
+                "Citizenship",
+                "WriteInNaturalizationYear",
+                "YearOfEntry",
+                "AncestryRecode",
+                "DetailedAncestryRecode1",
+                "DetailedAncestryRecode2",
+                "DecadeOfEntry",
+                "DetailedHispanicOriginRecode",
+                "Nativity",
+                "NativityOfParent",
+                "PlaceOfBirthRecode",
+                "WorldAreaOfBirth"
+            ]
+        },
+        {
+            "name": "Language",
+            "columns": [
+                "SpokenEnglishAbility",
+                "NonEnglishLanguage",
+                "LanguageSpokenAtHome"
+            ]
+        },
+        {
+            "name": "Transportation",
+            "columns": [
+                "WorkCommuteTime",
+                "TransportationToWork",
+                "NumberOfVehiclesDriven",
+                "TimeOfArrivalAtWork",
+                "TimeOfDepartureForWork"
+            ]
+        },
+        {
+            "name": "Location",
+            "columns": [
+                "Division",
+                "PUMSAreaCode",
+                "Region",
+                "State"
+            ]
+        },
+        {
+            "name": "HouseholdExpense",
+            "columns": [
+                "AdjustedMonthlyCondoFee",
+                "AdjustedMonthlyElectricCost",
+                "YearlyFuelCost",
+                "MonthlyGasCost",
+                "YearlyFireHazardFloodInsurance",
+                "YearlyMobileHomeCost",
+                "FirstMortgagePaymentPlusInsurance",
+                "MonthlyFirstMortgagePayment",
+                "FirstMortgagePaymentPlusRealEstateTax",
+                "MonthlyRent",
+                "SecondMortgagePayments",
+                "YearlyWaterCost",
+                "GrossRent",
+                "GrossRentPercentageOfIncome",
+                "MonthlyOwnerCostsAsPercentageOfHouseholdIncomePastYear",
+                "MonthlyOwnerCosts",
+                "YearlyPropertyTaxes"
+            ]
+        },
+        {
+            "name": "HouseholdFinance",
+            "columns": [
+                "HousingAdjustmentFactor",
+                "IncomeAdjustmentFactor",
+                "AgricultureYearlySales",
+                "PropertyValue"
+            ]
+        },
+        {
+            "name": "HouseholdDemographics",
+            "columns": [
+                "NumberOfPersonsInUnit",
+                "Tenure",
+                "VehiclesAvailable",
+                "FamilyTypeAndEmploymentStatus",
+                "FamilyIncome",
+                "FamilyPresenceAndAgeOfChildren",
+                "HouseholdLanguage",
+                "HouseholdFamilyType",
+                "HouseholdIncome",
+                "HouseholdWithGrandparentsAndChildren",
+                "PresenceAndChildrenAge",
+                "OwnChildrenAgeAndPresence",
+                "RelatedChildrenAgeAndPresence",
+                "LimitedEnglishHousehold",
+                "MultigenerationalHousehold",
+                "WhenMovedIntoHome",
+                "NumberOwnChildrenHouseholdUnweighted",
+                "NumberPersonsFamilyUnweighted",
+                "NoParentGrandparentHeadedHome",
+                "NonrelativeInHome",
+                "NumberRelatedChildrenInHomeUnweighted",
+                "UnmarriedPartnerHousehold",
+                "PresenceOfSubfamiliesInHome",
+                "PresenceOfPersons18OrYoungerInHomeUnweighted",
+                "PresenceOfPersons60YearsOrOlderInHomeUnweighted",
+                "PresenceOfPersons65YearsOrOlderInHomeUnweighted",
+                "SameSexMarriedCoupleHouseholds",
+                "YearlyWorkersInFamily",
+                "WorkExperienceOfHouseholderAndSpouse",
+                "WorkStatusOfHouseholderOrSpouseInFamilyHome",
+                "DetailedHouseholdLanguage",
+                "CoupleType",
+                "HouseholdType",
+                "YearlyFoodStamp"
+            ]
+        },
+        {
+            "name": "Utilities",
+            "columns": [
+                "InternetAccess",
+                "CellularDataPlan",
+                "DialUpService",
+                "AdjustedMonthlyElectricCost",
+                "YearlyFuelCost",
+                "MonthlyGasCost",
+                "HouseHeatingFuel",
+                "OtherInternet",
+                "SatelliteInternet",
+                "TelephoneService",
+                "YearlyWaterCost"
+            ]
+        },
+        {
+            "name": "Rental",
+            "columns": [
+                "MealsIncludedInRent",
+                "MonthlyRent",
+                "GrossRent",
+                "SpecifiedRentalUnit"
+            ]
+        },
+        {
+            "name": "UnitCharacteristics",
+            "columns": [
+                "UnitType",
+                "LotSize",
+                "NumberOfBedrooms",
+                "BusinessOnProperty",
+                "NumberOfRooms",
+                "TubOrShower",
+                "Refrigerator",
+                "HotAndColdRunningWater",
+                "SinkWithFaucet",
+                "Stove",
+                "VacancyStatus",
+                "WhenStructureBuilt",
+                "CompleteKitchenFacilities",
+                "CompletePlumbingFacilities"
+            ]
+        },
+        {
+            "name": "HouseholdTechnology",
+            "columns": [
+                "OtherComputerEquipment",
+                "InternetAccess",
+                "CellularDataPlan",
+                "DialUpService",
+                "LaptopOrDesktop",
+                "OtherInternet",
+                "SatelliteInternet",
+                "TelephoneService",
+                "HighSpeedInternet",
+                "Smartphone"
+            ]
+        },
+        {
+            "name": "Ownership",
+            "columns": [
+                "FirstMortgageStatus",
+                "SecondMortgagePayments",
+                "MonthlyOwnerCostsAsPercentageOfHouseholdIncomePastYear",
+                "MonthlyOwnerCosts",
+                "SecondMortgageLoanStatus",
+                "SpecifiedOwnerUnit"
+            ]
+        },
+        {
+            "name": "Survey",
+            "columns": [
+                "SurveyYear"
+            ]
+        }
+    ]
+}
