@@ -1,7 +1,7 @@
 
 
 CREATE OR ALTER PROCEDURE AddFinances
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@IncomeAdjustmentFactor VARCHAR(255),
 	@UnadjustedInterestDividendNetRentalIncome VARCHAR(255),
 	@UnadjustedOtherIncomePastYear VARCHAR(255),
@@ -36,7 +36,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddFamily
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@GaveBirthPastYear VARCHAR(255),
 	@GrandparentsLivingWithGrandchildren VARCHAR(255),
 	@LengthOfTimeResponsibleForGrandchildren VARCHAR(255),
@@ -83,7 +83,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddEmployment
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@ClassOfWorker VARCHAR(255),
 	@WorkCommuteTime VARCHAR(255),
 	@TransportationToWork VARCHAR(255),
@@ -138,7 +138,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddEducation
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@SchoolEnrollment VARCHAR(255),
 	@GradeLevelAttending VARCHAR(255),
 	@EducationalAttainment VARCHAR(255),
@@ -163,7 +163,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddHealthcare
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@SelfCareDifficulty VARCHAR(255),
 	@HearingDifficulty VARCHAR(255),
 	@VisionDifficulty VARCHAR(255),
@@ -216,7 +216,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddMilitary
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@VeteranServiceDisabilityRatingPercentage VARCHAR(255),
 	@VeteranServiceDisabilityRatingCheckbox VARCHAR(255),
 	@TricareCoverage VARCHAR(255),
@@ -257,7 +257,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddMigrationMobility
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@HouseholdMobilityStatus VARCHAR(255),
 	@MigrationPUMA VARCHAR(255),
 	@MigrationStateOrCountryRecode VARCHAR(255)
@@ -274,7 +274,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddBiometrics
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@PersonWeight VARCHAR(255),
 	@Age VARCHAR(255),
 	@Sex VARCHAR(255),
@@ -293,7 +293,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddRace
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@DetailedRaceRecode1 VARCHAR(255),
 	@DetailedRaceRecode2 VARCHAR(255),
 	@DetailedRaceRecode3 VARCHAR(255),
@@ -326,7 +326,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddNativityNationality
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@Citizenship VARCHAR(255),
 	@WriteInNaturalizationYear VARCHAR(255),
 	@YearOfEntry VARCHAR(255),
@@ -361,7 +361,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddLanguage
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@SpokenEnglishAbility VARCHAR(255),
 	@NonEnglishLanguage VARCHAR(255),
 	@LanguageSpokenAtHome VARCHAR(255)
@@ -378,7 +378,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddTransportation
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@WorkCommuteTime VARCHAR(255),
 	@TransportationToWork VARCHAR(255),
 	@NumberOfVehiclesDriven VARCHAR(255),
@@ -399,7 +399,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddLocation
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@Division VARCHAR(255),
 	@PUMSAreaCode VARCHAR(255),
 	@Region VARCHAR(255),
@@ -418,7 +418,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddHouseholdExpense
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@AdjustedMonthlyCondoFee VARCHAR(255),
 	@AdjustedMonthlyElectricCost VARCHAR(255),
 	@YearlyFuelCost VARCHAR(255),
@@ -463,7 +463,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddHouseholdFinance
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@HousingAdjustmentFactor VARCHAR(255),
 	@IncomeAdjustmentFactor VARCHAR(255),
 	@AgricultureYearlySales VARCHAR(255),
@@ -482,7 +482,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddHouseholdDemographics
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@NumberOfPersonsInUnit VARCHAR(255),
 	@Tenure VARCHAR(255),
 	@VehiclesAvailable VARCHAR(255),
@@ -561,7 +561,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddUtilities
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@InternetAccess VARCHAR(255),
 	@CellularDataPlan VARCHAR(255),
 	@DialUpService VARCHAR(255),
@@ -594,7 +594,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddRental
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@MealsIncludedInRent VARCHAR(255),
 	@MonthlyRent VARCHAR(255),
 	@GrossRent VARCHAR(255),
@@ -613,7 +613,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddUnitCharacteristics
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@UnitType VARCHAR(255),
 	@LotSize VARCHAR(255),
 	@NumberOfBedrooms VARCHAR(255),
@@ -652,7 +652,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddHouseholdTechnology
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@OtherComputerEquipment VARCHAR(255),
 	@InternetAccess VARCHAR(255),
 	@CellularDataPlan VARCHAR(255),
@@ -683,7 +683,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddOwnership
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@FirstMortgageStatus VARCHAR(255),
 	@SecondMortgagePayments VARCHAR(255),
 	@MonthlyOwnerCostsAsPercentageOfHouseholdIncomePastYear VARCHAR(255),
@@ -706,7 +706,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddSurvey
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@SurveyYear VARCHAR(255)
 AS
 BEGIN
@@ -719,7 +719,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddPerson
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@PUMSAreaCode VARCHAR(255),
 	@State VARCHAR(255),
 	@IncomeAdjustmentFactor VARCHAR(255),
@@ -905,7 +905,7 @@ END;
 
 
 CREATE OR ALTER PROCEDURE AddHousehold
-	@ID BIGINT,
+	@ID VARCHAR(255),
 	@Division VARCHAR(255),
 	@PUMSAreaCode VARCHAR(255),
 	@Region VARCHAR(255),

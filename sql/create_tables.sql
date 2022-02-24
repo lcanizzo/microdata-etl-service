@@ -73,7 +73,7 @@ CREATE SEQUENCE Survey_Seq START WITH 1;
 
 
 CREATE TABLE Finances (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	IncomeAdjustmentFactor VARCHAR(255),
 	UnadjustedInterestDividendNetRentalIncome VARCHAR(255),
 	UnadjustedOtherIncomePastYear VARCHAR(255),
@@ -90,7 +90,7 @@ CREATE TABLE Finances (
 
 
 CREATE TABLE Family (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	GaveBirthPastYear VARCHAR(255),
 	GrandparentsLivingWithGrandchildren VARCHAR(255),
 	LengthOfTimeResponsibleForGrandchildren VARCHAR(255),
@@ -113,7 +113,7 @@ CREATE TABLE Family (
 
 
 CREATE TABLE Employment (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	ClassOfWorker VARCHAR(255),
 	WorkCommuteTime VARCHAR(255),
 	TransportationToWork VARCHAR(255),
@@ -140,7 +140,7 @@ CREATE TABLE Employment (
 
 
 CREATE TABLE Education (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	SchoolEnrollment VARCHAR(255),
 	GradeLevelAttending VARCHAR(255),
 	EducationalAttainment VARCHAR(255),
@@ -152,7 +152,7 @@ CREATE TABLE Education (
 
 
 CREATE TABLE Healthcare (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	SelfCareDifficulty VARCHAR(255),
 	HearingDifficulty VARCHAR(255),
 	VisionDifficulty VARCHAR(255),
@@ -178,7 +178,7 @@ CREATE TABLE Healthcare (
 
 
 CREATE TABLE Military (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	VeteranServiceDisabilityRatingPercentage VARCHAR(255),
 	VeteranServiceDisabilityRatingCheckbox VARCHAR(255),
 	TricareCoverage VARCHAR(255),
@@ -198,7 +198,7 @@ CREATE TABLE Military (
 
 
 CREATE TABLE MigrationMobility (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	HouseholdMobilityStatus VARCHAR(255),
 	MigrationPUMA VARCHAR(255),
 	MigrationStateOrCountryRecode VARCHAR(255)
@@ -206,7 +206,7 @@ CREATE TABLE MigrationMobility (
 
 
 CREATE TABLE Biometrics (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	PersonWeight VARCHAR(255),
 	Age VARCHAR(255),
 	Sex VARCHAR(255),
@@ -215,7 +215,7 @@ CREATE TABLE Biometrics (
 
 
 CREATE TABLE Race (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	DetailedRaceRecode1 VARCHAR(255),
 	DetailedRaceRecode2 VARCHAR(255),
 	DetailedRaceRecode3 VARCHAR(255),
@@ -231,7 +231,7 @@ CREATE TABLE Race (
 
 
 CREATE TABLE NativityNationality (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	Citizenship VARCHAR(255),
 	WriteInNaturalizationYear VARCHAR(255),
 	YearOfEntry VARCHAR(255),
@@ -248,7 +248,7 @@ CREATE TABLE NativityNationality (
 
 
 CREATE TABLE Language (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	SpokenEnglishAbility VARCHAR(255),
 	NonEnglishLanguage VARCHAR(255),
 	LanguageSpokenAtHome VARCHAR(255)
@@ -256,7 +256,7 @@ CREATE TABLE Language (
 
 
 CREATE TABLE Transportation (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	WorkCommuteTime VARCHAR(255),
 	TransportationToWork VARCHAR(255),
 	NumberOfVehiclesDriven VARCHAR(255),
@@ -266,7 +266,7 @@ CREATE TABLE Transportation (
 
 
 CREATE TABLE Location (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	Division VARCHAR(255),
 	PUMSAreaCode VARCHAR(255),
 	Region VARCHAR(255),
@@ -275,7 +275,7 @@ CREATE TABLE Location (
 
 
 CREATE TABLE HouseholdExpense (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	AdjustedMonthlyCondoFee VARCHAR(255),
 	AdjustedMonthlyElectricCost VARCHAR(255),
 	YearlyFuelCost VARCHAR(255),
@@ -297,7 +297,7 @@ CREATE TABLE HouseholdExpense (
 
 
 CREATE TABLE HouseholdFinance (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	HousingAdjustmentFactor VARCHAR(255),
 	IncomeAdjustmentFactor VARCHAR(255),
 	AgricultureYearlySales VARCHAR(255),
@@ -306,7 +306,7 @@ CREATE TABLE HouseholdFinance (
 
 
 CREATE TABLE HouseholdDemographics (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	NumberOfPersonsInUnit VARCHAR(255),
 	Tenure VARCHAR(255),
 	VehiclesAvailable VARCHAR(255),
@@ -345,7 +345,7 @@ CREATE TABLE HouseholdDemographics (
 
 
 CREATE TABLE Utilities (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	InternetAccess VARCHAR(255),
 	CellularDataPlan VARCHAR(255),
 	DialUpService VARCHAR(255),
@@ -361,7 +361,7 @@ CREATE TABLE Utilities (
 
 
 CREATE TABLE Rental (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	MealsIncludedInRent VARCHAR(255),
 	MonthlyRent VARCHAR(255),
 	GrossRent VARCHAR(255),
@@ -370,7 +370,7 @@ CREATE TABLE Rental (
 
 
 CREATE TABLE UnitCharacteristics (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	UnitType VARCHAR(255),
 	LotSize VARCHAR(255),
 	NumberOfBedrooms VARCHAR(255),
@@ -389,7 +389,7 @@ CREATE TABLE UnitCharacteristics (
 
 
 CREATE TABLE HouseholdTechnology (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	OtherComputerEquipment VARCHAR(255),
 	InternetAccess VARCHAR(255),
 	CellularDataPlan VARCHAR(255),
@@ -404,7 +404,7 @@ CREATE TABLE HouseholdTechnology (
 
 
 CREATE TABLE Ownership (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	FirstMortgageStatus VARCHAR(255),
 	SecondMortgagePayments VARCHAR(255),
 	MonthlyOwnerCostsAsPercentageOfHouseholdIncomePastYear VARCHAR(255),
@@ -415,29 +415,29 @@ CREATE TABLE Ownership (
 
 
 CREATE TABLE Survey (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	SurveyYear VARCHAR(255)
 );
 
 
 CREATE TABLE Person (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	SerialNumber VARCHAR(255),
 	PersonNumber VARCHAR(255),
-	Finances_ID BIGINT,
-	Family_ID BIGINT,
-	Employment_ID BIGINT,
-	Education_ID BIGINT,
-	Healthcare_ID BIGINT,
-	Military_ID BIGINT,
-	MigrationMobility_ID BIGINT,
-	Race_ID BIGINT,
-	NativityNationality_ID BIGINT,
-	Biometrics_ID BIGINT,
-	Transportation_ID BIGINT,
-	Language_ID BIGINT,
-	Location_ID BIGINT,
-	Survey_ID BIGINT,
+	Finances_ID VARCHAR(255),
+	Family_ID VARCHAR(255),
+	Employment_ID VARCHAR(255),
+	Education_ID VARCHAR(255),
+	Healthcare_ID VARCHAR(255),
+	Military_ID VARCHAR(255),
+	MigrationMobility_ID VARCHAR(255),
+	Race_ID VARCHAR(255),
+	NativityNationality_ID VARCHAR(255),
+	Biometrics_ID VARCHAR(255),
+	Transportation_ID VARCHAR(255),
+	Language_ID VARCHAR(255),
+	Location_ID VARCHAR(255),
+	Survey_ID VARCHAR(255),
 	CONSTRAINT FK_Person_Finances
 	FOREIGN KEY (Finances_ID) REFERENCES Finances(ID),
 	CONSTRAINT FK_Person_Family
@@ -470,18 +470,18 @@ CREATE TABLE Person (
 
 
 CREATE TABLE Household (
-	ID BIGINT PRIMARY KEY,
+	ID VARCHAR(255) PRIMARY KEY,
 	SerialNumber VARCHAR(255),
-	HouseholdExpense_ID BIGINT,
-	HouseholdFinance_ID BIGINT,
-	HouseholdDemographics_ID BIGINT,
-	Utilities_ID BIGINT,
-	Rental_ID BIGINT,
-	UnitCharacteristics_ID BIGINT,
-	HouseholdTechnology_ID BIGINT,
-	Ownership_ID BIGINT,
-	Location_ID BIGINT,
-	Survey_ID BIGINT,
+	HouseholdExpense_ID VARCHAR(255),
+	HouseholdFinance_ID VARCHAR(255),
+	HouseholdDemographics_ID VARCHAR(255),
+	Utilities_ID VARCHAR(255),
+	Rental_ID VARCHAR(255),
+	UnitCharacteristics_ID VARCHAR(255),
+	HouseholdTechnology_ID VARCHAR(255),
+	Ownership_ID VARCHAR(255),
+	Location_ID VARCHAR(255),
+	Survey_ID VARCHAR(255),
 	CONSTRAINT FK_Household_HouseholdExpense
 	FOREIGN KEY (HouseholdExpense_ID) REFERENCES HouseholdExpense(ID),
 	CONSTRAINT FK_Household_HouseholdFinance

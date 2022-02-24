@@ -49,7 +49,7 @@ def prepare_create_tables_sql():
             sql_file.write('\n')
             sql_file.write('\n')
             sql_file.write(f'CREATE OR ALTER PROCEDURE Add{name}\n')
-            sql_file.write(f'{INDENT}@ID BIGINT,\n')
+            sql_file.write(f'{INDENT}@ID VARCHAR(255),\n')
             for col in fact_columns:
                 if col == fact_columns[-1]:
                     sql_file.write(f'{INDENT}@{col} VARCHAR(255)\n')
@@ -78,7 +78,7 @@ def prepare_create_tables_sql():
             sql_file.write('\n')
             sql_file.write('\n')
             sql_file.write(f'CREATE OR ALTER PROCEDURE Add{name}\n')
-            sql_file.write(f'{INDENT}@ID BIGINT,\n')
+            sql_file.write(f'{INDENT}@ID VARCHAR(255),\n')
             for col in fact_dim_cols[name]:
                 sql_file.write(f'{INDENT}@{col} VARCHAR(255),\n')
             for col in fact_columns:
@@ -141,7 +141,7 @@ def prepare_create_tables_sql():
             sql_file.write('\n')
             sql_file.write('\n')
             sql_file.write(f'CREATE TABLE {name} (\n')
-            sql_file.write(f'{INDENT}ID BIGINT PRIMARY KEY,\n')
+            sql_file.write(f'{INDENT}ID VARCHAR(255) PRIMARY KEY,\n')
             for col in fact_table['columns']:
                 if col == fact_table['columns'][-1]:
                     sql_file.write(f'{INDENT}{col} VARCHAR(255)\n')
@@ -154,11 +154,11 @@ def prepare_create_tables_sql():
             sql_file.write('\n')
             sql_file.write('\n')
             sql_file.write(f'CREATE TABLE {name} (\n')
-            sql_file.write(f'{INDENT}ID BIGINT PRIMARY KEY,\n')
+            sql_file.write(f'{INDENT}ID VARCHAR(255) PRIMARY KEY,\n')
             for col in fact_table['columns']:
                 sql_file.write(f'{INDENT}{col} VARCHAR(255),\n')
             for dmns in fact_table['dimensions']:
-                sql_file.write(f'{INDENT}{dmns}_ID BIGINT,\n')
+                sql_file.write(f'{INDENT}{dmns}_ID VARCHAR(255),\n')
             for dmns in fact_table['dimensions']:
                 sql_file.write(f'{INDENT}CONSTRAINT FK_{name}_{dmns}\n')
                 sql_file.write(
