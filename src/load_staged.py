@@ -4,7 +4,6 @@ Load staged files into sql server.
 # %%
 import pandas as pd
 import numpy as np
-import urllib
 import pyodbc
 import sqlalchemy
 from multiprocess import Pool
@@ -12,18 +11,11 @@ from os import listdir
 from functools import partial
 from process_timer import time_execution
 from _constants import recent_years
+from sql import params
 from sqlalchemy.types import NVARCHAR
 
 
-# insert data from csv file into dataframe.
-params = urllib.parse.quote_plus(
-    'DRIVER={SQL Server};' +
-    'SERVER=DESKTOP-GPDN5C9\SQLEXPRESS;' +
-    'DATABASE=CS779_Term_Project;' +
-    'Trusted_Connection=True;'
-)
 num_partitions = 100
-print(params)
 
 
 def load_staging_dataframe(df, table):

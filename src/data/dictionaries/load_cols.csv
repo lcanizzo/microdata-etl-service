@@ -74,12 +74,10 @@
 81,MonthlyOwnerCostsAsPercentageOfHouseholdIncomePastYear
 82,UnmarriedPartnerHousehold
 83,CompletePlumbingFacilities
-84,CompletePlumbingFacilitiesPuertoRico
 85,PresenceOfSubfamiliesInHome
 86,PresenceOfPersons18OrYoungerInHomeUnweighted
 87,PresenceOfPersons60YearsOrOlderInHomeUnweighted
 88,PresenceOfPersons65YearsOrOlderInHomeUnweighted
-89,ResponseMode
 90,MonthlyOwnerCosts
 91,SecondMortgageLoanStatus
 92,SpecifiedRentalUnit
@@ -89,7 +87,6 @@
 96,YearlyWorkersInFamily
 97,WorkExperienceOfHouseholderAndSpouse
 98,WorkStatusOfHouseholderOrSpouseInFamilyHome
-134,MonthlyRentAllocatedRent
 234,PersonNumber
 235,PersonWeight
 236,Age
