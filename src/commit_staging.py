@@ -11,7 +11,7 @@ from os import listdir
 from functools import partial
 from process_timer import time_execution
 from _constants import recent_years
-from sql import params
+from sql import get_params
 from sqlalchemy.types import NVARCHAR
 
 
@@ -22,6 +22,7 @@ def load_staging_dataframe(df, table):
     """todo: comment"""
     print(f'__ loading chunk')
     # DB connection
+    params = get_params()
     con = sqlalchemy.create_engine(
         'mssql+pyodbc:///?odbc_connect=%s' % params
     )
