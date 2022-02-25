@@ -1,3 +1,7 @@
+"""
+Compiles ETL errors for review.
+"""
+
 # %%
 import pandas as pd
 from os import listdir, remove as os_remove
