@@ -5,3 +5,5 @@ notes/
 **/compiled_data/**/*.json
 compiled_data/*.json
 __pycache__/
+create_tables.sql
+create_procedures.sql
